@@ -10,7 +10,8 @@ const NewCommentForm = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col mt-4">
+    <form onSubmit={handleSubmit} className="flex items-start mt-4 gap-2">
+      <img src="/images/avatars/image-juliusomo.png" alt="" className='w-10 h-10 rounded-full' />
       <textarea
         className="w-full p-2 mb-2 border rounded-md"
         value={content}
