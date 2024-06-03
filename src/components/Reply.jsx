@@ -38,15 +38,7 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
         </div>
       </div>
       <div className="flex flex-col md:flex-row md:items-start mt-2 md:space-x-4">
-        <div className="flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10">
-          <button onClick={() => onVote(reply.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
-            <FaPlus className="md:rotate-90" />
-          </button>
-          <span className="mx-2 md:mx-0 md:my-2">{reply.score}</span>
-          <button onClick={() => onVote(reply.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
-            <FaMinus className="md:rotate-90" />
-          </button>
-        </div>
+       
         <div className="flex-1 md:order-2">
           {isEditing ? (
             <CommentForm
@@ -74,7 +66,16 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           </div>
         )}
       </div>
-      <div className="flex items-center justify-end mt-2 md:hidden">
+      <div className="flex items-center justify-between mt-2 md:hidden">
+      <div className="flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10">
+          <button onClick={() => onVote(reply.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
+            <FaPlus className="md:rotate-90" />
+          </button>
+          <span className="mx-2 md:mx-0 md:my-2">{reply.score}</span>
+          <button onClick={() => onVote(reply.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
+            <FaMinus className="md:rotate-90" />
+          </button>
+        </div>
         <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100">
           <FaReply className="mr-1" /> Reply
         </button>
