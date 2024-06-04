@@ -41,9 +41,14 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           </div>
         </div>
         <div className="hidden md:flex items-center space-x-2">
-          <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100">
+        {reply.user.username !== currentUser.username && (
+                  <>
+                     <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100 bg-yellow-200">
             <FaReply className="mr-1" /> Reply
           </button>
+                  </>
+                )}
+         
           {reply.user.username === currentUser.username && (
             <>
               <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
@@ -87,7 +92,7 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           </button>
         </div>
         <div className='flex items-center justify-center'>
-        <div className="flex items-center justify-between mt-2 md:hidden">
+        <div className="flex items-center justify-between md:hidden">
         {reply.user.username === currentUser.username && (
           <div className="flex items-center space-x-2">
             <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
@@ -99,9 +104,14 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           </div>
         )}
       </div>
-      <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100">
+      {reply.user.username !== currentUser.username && (
+                  <>
+                    <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100">
           <FaReply className="mr-1" /> Reply
         </button>
+                  </>
+                )}
+     
       </div>
         </div>
         

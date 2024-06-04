@@ -89,8 +89,8 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
             <FaMinus className="md:rotate-90" />
           </button>
         </div>
-        <div className='flex'>
-        <div className="flex items-center justify-between mt-2 md:hidden">
+        <div className='flex '>
+        <div className="flex items-center justify-between md:hidden">
         {comment.user.username === currentUser.username && (
           <div className="flex items-center space-x-2">
             <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
@@ -102,7 +102,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
           </div>
         )}
       </div>
-      <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100">
+      <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100 ">
           <FaReply className="mr-1" /> Reply
         </button> 
         </div>
