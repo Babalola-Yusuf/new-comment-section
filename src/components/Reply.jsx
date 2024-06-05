@@ -3,7 +3,6 @@ import { timeSince } from '../utils/timeUtils';
 import { FaReply, FaEdit, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import CommentForm from './CommentForm';
 import Modal from './Modal';
-import ReplyReplies from './ReplyReplies';
 
 const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
   const [isReplying, setIsReplying] = useState(false);
@@ -125,19 +124,7 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           onCancel={() => setIsReplying(false)}
         />
       )}
-       <div className="ml-8 mt-4 ">
-        {reply.replies.map(reply => (
-          <ReplyReplies
-            key={reply.id}
-            reply={reply}
-            currentUser={currentUser}
-            onVote={onVote}
-            onReply={onReply}
-            onDelete={onDelete}
-            onEdit={onEdit}
-          />
-        ))}
-      </div>
+       
       {showModal && (
         <Modal
           onConfirm={() => {
