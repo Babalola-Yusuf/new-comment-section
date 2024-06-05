@@ -13,7 +13,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
   return (
     <div className="p-4 mb-4 bg-white rounded-lg shadow-md">
          
-      <div className='flex flex-row-reverse justify-between '>
+      <div className='flex flex-row-reverse justify-between'>
           <div className="md:flex items-center md:order-1 md:flex-col md:space-y-2  mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10 hidden md:mr-3">
             <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
               <FaPlus className="md:rotate-90" />
@@ -79,8 +79,8 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
       </div>
   
       
-      <div className="flex items-center justify-between mt-2 md:hidden">
-      <div className="flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10 ">
+      <div className="flex items-center justify-between mt-2 md:hidden ">
+      <div className="flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10 ">
           <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
             <FaPlus className="md:rotate-90" />
           </button>
@@ -117,7 +117,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
           onCancel={() => setIsReplying(false)}
         />
       )}
-      <div className="ml-8 mt-4">
+      <div className="ml-8 mt-4 ">
         {comment.replies.map(reply => (
           <Reply
             key={reply.id}
