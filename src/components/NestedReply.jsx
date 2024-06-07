@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { timeSince } from '../utils/timeUtils';
 import { FaReply, FaEdit, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
-import NestedReply from './NestedReply';
 import CommentForm from './CommentForm';
 import Modal from './Modal';
 
-const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
+const NestedReply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
   const [isReplying, setIsReplying] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [showModal, setShowModal] = useState(false);
@@ -125,19 +124,7 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           onCancel={() => setIsReplying(false)}
         />
       )}
-        {/* <div className="ml-8 mt-4 ">
-        {reply.replies.map(reply => (
-          <NestedReply
-            key={reply.id}
-            reply={reply}
-            currentUser={currentUser}
-            onVote={onVote}
-            onReply={onReply}
-            onDelete={onDelete}
-            onEdit={onEdit}
-          />
-        ))}
-      </div>  */}
+       
       {showModal && (
         <Modal
           onConfirm={() => {
@@ -151,4 +138,4 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
   );
 };
 
-export default Reply;
+export default NestedReply;
