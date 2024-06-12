@@ -4,6 +4,7 @@ import { FaReply, FaEdit, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import Reply from './Reply';
 import CommentForm from './CommentForm';
 import Modal from './Modal';
+import ReplyList from './ReplyList';
 
 const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) => {
   const [isReplying, setIsReplying] = useState(false);
@@ -118,17 +119,17 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
         />
       )}
       <div className="ml-8 mt-4 ">
-        {comment.replies.map(reply => (
-          <Reply
-            key={reply.id}
-            reply={reply}
+        
+          <ReplyList
+            key={ comment.id }
+            replies={comment.replies}
             currentUser={currentUser}
             onVote={onVote}
             onReply={onReply}
             onDelete={onDelete}
             onEdit={onEdit}
           />
-        ))}
+        
       </div>
       {showModal && (
         <Modal

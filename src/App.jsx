@@ -44,6 +44,24 @@ const App = () => {
     setComments(updatedComments);
   };
 
+  /* const handleReply = (id, content) => {
+    const newReply = {
+      id: Date.now(),
+      content,
+      createdAt: new Date().toISOString(),
+      score: 0,
+      replyingTo: comments.find(comment => comment.id === id)?.user.username,
+      user: currentUser
+    };
+    const updatedComments = comments.map(comment => {
+      if (comment.id === id ) {
+        return { ...comment, replies: [...comment.replies, newReply] };
+      }
+      return comment;
+    });
+    setComments(updatedComments);
+  }; */
+
   const handleReply = (id, content) => {
     const newReply = {
       id: Date.now(),
@@ -56,6 +74,15 @@ const App = () => {
     const updatedComments = comments.map(comment => {
       if (comment.id === id) {
         return { ...comment, replies: [...comment.replies, newReply] };
+      }
+      if (comment.replies) {
+        const updatedReplies = comment.replies.map(reply => {
+          if (reply.id === id) {
+            return { ...reply, replies: [...reply.replies, newReply] };
+          }
+          return reply;
+        });
+        return { ...comment, replies: updatedReplies };
       }
       return comment;
     });
