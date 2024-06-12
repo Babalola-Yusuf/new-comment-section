@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 import { timeSince } from '../utils/timeUtils';
 import { FaReply, FaEdit, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
-<<<<<<< HEAD
-
-=======
-/* import NestedReply from './NestedReply'; */
->>>>>>> 21beebe1b6889ccffc8c7cb262349533d7e68895
 import CommentForm from './CommentForm';
 import Modal from './Modal';
 
