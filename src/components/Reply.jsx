@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 import { timeSince } from '../utils/timeUtils';
 import { FaReply, FaEdit, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
+<<<<<<< HEAD
 
+=======
+/* import NestedReply from './NestedReply'; */
+>>>>>>> 21beebe1b6889ccffc8c7cb262349533d7e68895
 import CommentForm from './CommentForm';
 import Modal from './Modal';
 
-const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
+const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
   const [isReplying, setIsReplying] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
   return (
+    
     <div className="p-4 mb-4 bg-gray-100 rounded-lg shadow-md">
 
       <div className=' md:flex flex-row-reverse justify-between'>
@@ -125,11 +130,13 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           onCancel={() => setIsReplying(false)}
         />
       )}
-        {/* <div className="ml-8 mt-4 ">
-        {reply.replies.map(reply => (
+       {/* <div className="ml-8 mt-4">
+      
+        {reply.replies && reply.replies.map(nestedReply => (
+        
           <NestedReply
-            key={reply.id}
-            reply={reply}
+            key={nestedReply.id}
+            reply={nestedReply}
             currentUser={currentUser}
             onVote={onVote}
             onReply={onReply}
@@ -137,7 +144,7 @@ const Reply = ({ reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
             onEdit={onEdit}
           />
         ))}
-      </div>  */}
+      </div> */}
       {showModal && (
         <Modal
           onConfirm={() => {
