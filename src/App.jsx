@@ -44,23 +44,6 @@ const App = () => {
     setComments(updatedComments);
   };
 
-  /* const handleReply = (id, content) => {
-    const newReply = {
-      id: Date.now(),
-      content,
-      createdAt: new Date().toISOString(),
-      score: 0,
-      replyingTo: comments.find(comment => comment.id === id)?.user.username,
-      user: currentUser
-    };
-    const updatedComments = comments.map(comment => {
-      if (comment.id === id ) {
-        return { ...comment, replies: [...comment.replies, newReply] };
-      }
-      return comment;
-    });
-    setComments(updatedComments);
-  }; */
 
   const handleReply = (id, content) => {
     const newReply = {
@@ -146,7 +129,7 @@ const App = () => {
           onEdit={handleEdit}
         />
       )}
-      <NewCommentForm onSubmit={handleAddComment} />
+      <NewCommentForm onSubmit={handleAddComment}  />
       {<button onClick={handleReset} className="mt-4 px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600">
         Reset to Default Comments
       </button> }

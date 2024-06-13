@@ -3,6 +3,7 @@ import { timeSince } from '../utils/timeUtils';
 import { FaReply, FaEdit, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
 import CommentForm from './CommentForm';
 import Modal from './Modal';
+import ReplyList from './ReplyList';
 
 const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
   const [isReplying, setIsReplying] = useState(false);
@@ -126,6 +127,18 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
         />
       )}
       
+      
+      <ReplyList
+            key={ reply.id }
+            replies={reply.replies}
+            currentUser={currentUser}
+            onVote={onVote}
+            onReply={onReply}
+            onDelete={onDelete}
+            onEdit={onEdit}
+          />
+        
+
       {showModal && (
         <Modal
           onConfirm={() => {
