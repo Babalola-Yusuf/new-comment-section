@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { timeSince } from '../utils/timeUtils';
 import { FaReply, FaEdit, FaTrashAlt, FaPlus, FaMinus } from 'react-icons/fa';
-import Reply from './Reply';
 import CommentForm from './CommentForm';
 import Modal from './Modal';
 import ReplyList from './ReplyList';

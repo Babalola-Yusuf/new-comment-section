@@ -125,21 +125,7 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
           onCancel={() => setIsReplying(false)}
         />
       )}
-       {/* <div className="ml-8 mt-4">
       
-        {reply.replies && reply.replies.map(nestedReply => (
-        
-          <NestedReply
-            key={nestedReply.id}
-            reply={nestedReply}
-            currentUser={currentUser}
-            onVote={onVote}
-            onReply={onReply}
-            onDelete={onDelete}
-            onEdit={onEdit}
-          />
-        ))}
-      </div> */}
       {showModal && (
         <Modal
           onConfirm={() => {
