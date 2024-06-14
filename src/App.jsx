@@ -60,7 +60,7 @@ const App = () => {
       }
       if (comment.replies) {
         const updatedReplies = comment.replies.map(reply => {
-          if (reply.id === id) {
+          if (reply.id === id && Array.isArray(reply.replies)) {
             return { ...reply, replies: [...reply.replies, newReply] };
           }
           return reply;
