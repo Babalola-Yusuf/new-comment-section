@@ -7,7 +7,6 @@ const App = () => {
   const [comments, setComments] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
 
-  // Initialize state from localStorage or default data
   useEffect(() => {
     const savedComments = JSON.parse(localStorage.getItem('comments'));
     if (savedComments) {
@@ -18,7 +17,6 @@ const App = () => {
     setCurrentUser(data.currentUser);
   }, []);
 
-  // Update localStorage whenever comments change
   useEffect(() => {
     if (comments.length > 0) {
       localStorage.setItem('comments', JSON.stringify(comments));
@@ -26,78 +24,83 @@ const App = () => {
   }, [comments]);
 
   const handleVote = (id, value) => {
-    const updatedComments = comments.map(comment => {
-      if (comment.id === id) {
-        return { ...comment, score: comment.score + value };
-      }
-      if (comment.replies) {
-        const updatedReplies = comment.replies.map(reply => {
-          if (reply.id === id) {
-            return { ...reply, score: reply.score + value };
-          }
-          return reply;
-        });
-        return { ...comment, replies: updatedReplies };
-      }
-      return comment;
-    });
-    setComments(updatedComments);
+    const updateScore = (comments) => {
+      return comments.map(comment => {
+        if (comment.id === id) {
+          return { ...comment, score: comment.score + value };
+        }
+        if (comment.replies) {
+          return { ...comment, replies: updateScore(comment.replies) };
+        }
+        return comment;
+      });
+    };
+
+    setComments(updateScore(comments));
   };
 
-
-  const handleReply = (id, content) => {
+  const handleReply = (parentId, replyContent) => {
     const newReply = {
       id: Date.now(),
-      content,
+      content: replyContent,
       createdAt: new Date().toISOString(),
       score: 0,
-      replyingTo: comments.find(comment => comment.id === id)?.user.username,
-      user: currentUser
+      replyingTo: '',
+      user: currentUser,
+      replies: []
     };
-    const updatedComments = comments.map(comment => {
-      if (comment.id === id) {
-        return { ...comment, replies: [...comment.replies, newReply] };
-      }
-      if (comment.replies) {
-        const updatedReplies = comment.replies.map(reply => {
-          if (reply.id === id && Array.isArray(reply.replies)) {
-            return { ...reply, replies: [...reply.replies, newReply] };
+
+    const addReply = (comments) => {
+      return comments.map(comment => {
+        if (comment.id === parentId) {
+          newReply.replyingTo = comment.user.username;
+          return { ...comment, replies: [...comment.replies, newReply] };
+        }
+        if (comment.replies) {
+          const updatedReplies = addReply(comment.replies);
+          if (updatedReplies !== comment.replies) {
+            return { ...comment, replies: updatedReplies };
           }
-          return reply;
-        });
-        return { ...comment, replies: updatedReplies };
-      }
-      return comment;
-    });
-    setComments(updatedComments);
+        }
+        return comment;
+      });
+    };
+
+    setComments(addReply(comments));
   };
 
   const handleDelete = (id) => {
-    const updatedComments = comments.filter(comment => comment.id !== id);
-    const updatedCommentsWithReplies = updatedComments.map(comment => {
-      const updatedReplies = comment.replies.filter(reply => reply.id !== id);
-      return { ...comment, replies: updatedReplies };
-    });
-    setComments(updatedCommentsWithReplies);
+    const removeComment = (comments) => {
+      return comments
+        .map(comment => {
+          if (comment.id === id) {
+            return null;
+          }
+          if (comment.replies) {
+            comment.replies = removeComment(comment.replies);
+          }
+          return comment;
+        })
+        .filter(comment => comment !== null);
+    };
+
+    setComments(removeComment(comments));
   };
 
   const handleEdit = (id, content) => {
-    const updatedComments = comments.map(comment => {
-      if (comment.id === id) {
-        return { ...comment, content };
-      }
-      if (comment.replies) {
-        const updatedReplies = comment.replies.map(reply => {
-          if (reply.id === id) {
-            return { ...reply, content };
-          }
-          return reply;
-        });
-        return { ...comment, replies: updatedReplies };
-      }
-      return comment;
-    });
-    setComments(updatedComments);
+    const editComment = (comments) => {
+      return comments.map(comment => {
+        if (comment.id === id) {
+          return { ...comment, content };
+        }
+        if (comment.replies) {
+          return { ...comment, replies: editComment(comment.replies) };
+        }
+        return comment;
+      });
+    };
+
+    setComments(editComment(comments));
   };
 
   const handleAddComment = (content) => {
@@ -129,10 +132,10 @@ const App = () => {
           onEdit={handleEdit}
         />
       )}
-      <NewCommentForm onSubmit={handleAddComment}  />
-      {<button onClick={handleReset} className="mt-4 px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600">
+      <NewCommentForm onSubmit={handleAddComment} />
+      <button onClick={handleReset} className="mt-4 px-4 py-2 text-white bg-red-500 rounded-md hover:bg-red-600">
         Reset to Default Comments
-      </button> }
+      </button>
     </div>
   );
 };
