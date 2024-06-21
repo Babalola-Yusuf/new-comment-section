@@ -117,7 +117,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
           onCancel={() => setIsReplying(false)}
         />
       )}
-      <div className="ml-0 lg:ml-8 mt-4 bg-yellow-200">
+      <div className="ml-0 lg:ml-8 mt-4">
         
           <ReplyList
             key={ comment.id }
