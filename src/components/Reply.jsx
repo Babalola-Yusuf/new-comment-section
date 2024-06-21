@@ -15,13 +15,13 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
     <div className="p-4 mb-4 bg-gray-100 rounded-lg shadow-md">
 
       <div className=' md:flex flex-row-reverse justify-between'>
-      <div className="hidden md:flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10">
-          <button onClick={() => onVote(reply.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
-            <FaPlus className="md:rotate-90" />
+      <div className="hidden md:flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 h-28 ">
+          <button onClick={() => onVote(reply.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:text-gray-400">
+            <FaPlus className="" />
           </button>
           <span className="mx-2 md:mx-0 md:my-2">{reply.score}</span>
-          <button onClick={() => onVote(reply.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
-            <FaMinus className="md:rotate-90" />
+          <button onClick={() => onVote(reply.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:text-gray-400">
+            <FaMinus className="" />
           </button>
       </div>
       <div className="w-11/12 ">
@@ -45,7 +45,7 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
         <div className="hidden md:flex items-center space-x-2 ">
         {reply.user.username !== currentUser.username && (
                   <>
-                     <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100 ">
+                     <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100 hover:text-blue-200">
               <FaReply className="mr-1" /> Reply
               </button>
                   </>
@@ -53,12 +53,13 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
          
           {reply.user.username === currentUser.username && (
             <>
-              <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
-                <FaEdit className="mr-1" /> Edit
-              </button>
-              <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:bg-gray-100">
+            <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:bg-gray-100 hover:text-red-200">
                 <FaTrashAlt className="mr-1" /> Delete
               </button>
+              <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-blue-500 hover:text-blue-200 rounded-md hover:bg-gray-100">
+                <FaEdit className="mr-1" /> Edit
+              </button>
+              
             </>
           )}
         </div>
@@ -85,11 +86,11 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
       
       <div className="flex items-center justify-between mt-2 md:hidden">
       <div className="flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10">
-          <button onClick={() => onVote(reply.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
+          <button onClick={() => onVote(reply.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:text-gray-400">
             <FaPlus className="md:rotate-90" />
           </button>
           <span className="mx-2 md:mx-0 md:my-2">{reply.score}</span>
-          <button onClick={() => onVote(reply.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
+          <button onClick={() => onVote(reply.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:text-gray-400">
             <FaMinus className="md:rotate-90" />
           </button>
         </div>
@@ -97,18 +98,19 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
         <div className="flex items-center justify-between md:hidden">
         {reply.user.username === currentUser.username && (
           <div className="flex items-center space-x-2">
-            <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
-              <FaEdit className="mr-1" /> Edit
-            </button>
-            <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:bg-gray-100">
+             <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:text-red-200">
               <FaTrashAlt className="mr-1" /> Delete
             </button>
+            <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:text-blue-200">
+              <FaEdit className="mr-1" /> Edit
+            </button>
+           
           </div>
         )}
       </div>
       {reply.user.username !== currentUser.username && (
                   <>
-                    <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100">
+                    <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:text-blue-200">
           <FaReply className="mr-1" /> Reply
         </button>
                   </>

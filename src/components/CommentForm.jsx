@@ -12,7 +12,7 @@ const CommentForm = ({ initialValue = '', onSubmit, onCancel }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col ">
       <textarea
-        className="w-full p-2 mb-2 border rounded-md"
+        className="w-full p-2 mb-2 border rounded-md resize-none"
         value={content}
         onChange={(e) => setContent(e.target.value)}
         rows="3"

@@ -121,7 +121,7 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 lg:w-55% ">
       {comments.length > 0 && (
         <CommentList
           comments={comments}

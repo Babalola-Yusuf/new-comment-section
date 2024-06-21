@@ -14,13 +14,13 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
     <div className="p-4 mb-4 bg-white rounded-lg shadow-md">
          
       <div className='flex flex-row-reverse justify-between'>
-          <div className="md:flex items-center md:order-1 md:flex-col md:space-y-2  mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10 hidden md:mr-3">
-            <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
-              <FaPlus className="md:rotate-90" />
+          <div className="md:flex items-center md:order-1 md:flex-col md:space-y-2  mt-2 md:mt-0 bg-gray-50 rounded-md p-2 w-28 md:w-10 h-28 hidden md:mr-3">
+            <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-blue-300 rounded-md hover:text-blue-600">
+              <FaPlus className="" />
             </button>
             <span className="mx-2 md:mx-0 md:my-2">{comment.score}</span>
-            <button onClick={() => onVote(comment.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
-              <FaMinus className="md:rotate-90" />
+            <button onClick={() => onVote(comment.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-blue-300 rounded-md hover:text-blue-600">
+              <FaMinus className="" />
             </button>
           </div>
 
@@ -43,7 +43,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
                 </div>
               </div>
               <div className="hidden md:flex items-center space-x-2">
-                <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100">
+                <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md  hover:text-blue-200">
                   <FaReply className="mr-1" /> Reply
                 </button>
                 {comment.user.username === currentUser.username && (
@@ -51,7 +51,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
                     <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
                       <FaEdit className="mr-1" /> Edit
                     </button>
-                    <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:bg-gray-100">
+                    <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:text-red-200">
                       <FaTrashAlt className="mr-1" /> Delete
                     </button>
                   </>
@@ -80,12 +80,12 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
   
       
       <div className="flex items-center justify-between mt-2 md:hidden ">
-      <div className="flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt md:mt-0 bg-blue-200 rounded-md p-2 w-28 md:w-10 ">
-          <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
-            <FaPlus className="md:rotate-90" />
+      <div className="flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt md:mt-0 bg-gray-50 rounded-md p-2 ">
+          <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-blue-300 rounded-md hover:text-blue-500">
+            <FaPlus className="md:rotate-90 " />
           </button>
           <span className="mx-2 md:mx-0 md:my-2">{comment.score}</span>
-          <button onClick={() => onVote(comment.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:bg-gray-100">
+          <button onClick={() => onVote(comment.id, -1)} className="flex items-center md:flex-col px-2 py-1 text-blue-300 rounded-md hover:text-blue-500">
             <FaMinus className="md:rotate-90" />
           </button>
         </div>
@@ -93,16 +93,16 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
         <div className="flex items-center justify-between md:hidden">
         {comment.user.username === currentUser.username && (
           <div className="flex items-center space-x-2">
-            <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
+            <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:text-blue-200">
               <FaEdit className="mr-1" /> Edit
             </button>
-            <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:bg-gray-100">
+            <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:text-red-200">
               <FaTrashAlt className="mr-1" /> Delete
             </button>
           </div>
         )}
       </div>
-      <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:bg-gray-100 ">
+      <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:text-blue-200 ">
           <FaReply className="mr-1" /> Reply
         </button> 
         </div>
