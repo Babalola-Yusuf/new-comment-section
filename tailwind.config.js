@@ -5,11 +5,13 @@ export default {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
-    width: {
-      '55%': '55%',
-    },
-   
+    extend: {},  
+  },
+  width: {
+    '55%': '55%',
+  },
+  colors: {
+    LightGrayishBlue: 'hsl(239, 57%, 85%)',
   },
   plugins: [],
 }

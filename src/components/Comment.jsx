@@ -11,9 +11,9 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div className="p-4 mb-4 bg-white rounded-lg shadow-md">
+    <div className="p-4 mb-4 bg-white rounded-lg shadow-md min-w-full">
          
-      <div className='flex flex-row-reverse justify-between'>
+      <div className='flex flex-row-reverse gap-2'>
           <div className="md:flex items-center md:order-1 md:flex-col md:space-y-2  mt-2 md:mt-0 bg-gray-50 rounded-md p-2 w-28 md:w-10 h-28 hidden md:mr-3">
             <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-blue-300 rounded-md hover:text-blue-600">
               <FaPlus className="" />
@@ -24,7 +24,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
             </button>
           </div>
 
-            <div className='w-full'>
+            <div className='w-full '>
             <div className="flex justify-between items-start">
               <div className="flex items-center">
                 <img src={comment.user.image.png} alt={comment.user.username} className="w-10 h-10 rounded-full" />
@@ -42,10 +42,15 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
                   </div>
                 </div>
               </div>
-              <div className="hidden md:flex items-center space-x-2">
-                <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md  hover:text-blue-200">
-                  <FaReply className="mr-1" /> Reply
-                </button>
+              <div className="hidden md:flex items-center space-x-2 ">
+                            {comment.user.username !== currentUser.username && (
+                  <>
+                      <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md  hover:text-blue-200">
+                                <FaReply className="mr-1" /> Reply
+                              </button>
+                  </>
+                )}
+             
                 {comment.user.username === currentUser.username && (
                   <>
                     <button onClick={() => setIsEditing(!isEditing)} className="flex items-center px-2 py-1 text-yellow-500 rounded-md hover:bg-gray-100">
@@ -71,7 +76,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
                     onCancel={() => setIsEditing(false)}
                   />
                 ) : (
-                  <p className="mb-2">{comment.content}</p>
+                  <p className="mb-2 text-gray-500">{comment.content}</p>
                 )}
               </div>
             </div>  
@@ -99,12 +104,16 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
             <button onClick={() => setShowModal(true)} className="flex items-center px-2 py-1 text-red-500 rounded-md hover:text-red-200">
               <FaTrashAlt className="mr-1" /> Delete
             </button>
-          </div>
+          </div>  
         )}
       </div>
-      <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:text-blue-200 ">
+      {comment.user.username !== currentUser.username && (
+    <>
+       <button onClick={() => setIsReplying(!isReplying)} className="flex items-center px-2 py-1 text-blue-500 rounded-md hover:text-blue-200 ">
           <FaReply className="mr-1" /> Reply
         </button> 
+    </>
+     )}
         </div>
         
       </div>
