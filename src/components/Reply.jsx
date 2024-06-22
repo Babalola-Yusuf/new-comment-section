@@ -15,7 +15,7 @@ const Reply = ({  reply, currentUser, onVote, onReply, onDelete, onEdit }) => {
     <div className="p-4 mb-4 bg-gray-100 rounded-lg shadow-md">
 
       <div className=' md:flex flex-row-reverse justify-between'>
-      <div className="hidden md:flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 h-28 ">
+      <div className="hidden md:flex items-center md:order-1 md:flex-col md:space-y-2 md:mr-4 mt-2 md:mt-0 bg-blue-200 rounded-md p-2 w-10 h-28 ">
           <button onClick={() => onVote(reply.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-gray-600 rounded-md hover:text-gray-400">
             <FaPlus className="" />
           </button>

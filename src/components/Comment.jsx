@@ -14,7 +14,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
     <div className="p-4 mb-4 bg-white rounded-lg shadow-md min-w-full">
          
       <div className='flex flex-row-reverse gap-2'>
-          <div className="md:flex items-center md:order-1 md:flex-col md:space-y-2  mt-2 md:mt-0 bg-gray-50 rounded-md p-2 w-28 md:w-10 h-28 hidden md:mr-3">
+          <div className="md:flex items-center md:order-1 md:flex-col md:space-y-2  mt-2 md:mt-0 bg-gray-50 rounded-md p-2 w-10 h-28 hidden md:mr-3">
             <button onClick={() => onVote(comment.id, 1)} className="flex items-center md:flex-col px-2 py-1 text-blue-300 rounded-md hover:text-blue-600">
               <FaPlus className="" />
             </button>
@@ -76,7 +76,7 @@ const Comment = ({ comment, currentUser, onVote, onReply, onDelete, onEdit }) =>
                     onCancel={() => setIsEditing(false)}
                   />
                 ) : (
-                  <p className="mb-2 text-gray-500">{comment.content}</p>
+                  <p className="mb-2 text-GrayishBlue">{comment.content}</p>
                 )}
               </div>
             </div>  
