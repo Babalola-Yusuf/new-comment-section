@@ -17,6 +17,7 @@ const NewCommentForm = ({ onSubmit }) => {
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="Add a comment..."
+        autoComplete='on'
         rows="3"
         cols="60"
       />

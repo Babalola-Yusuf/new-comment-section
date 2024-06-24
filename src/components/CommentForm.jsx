@@ -12,10 +12,12 @@ const CommentForm = ({ initialValue = '', onSubmit, onCancel }) => {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col ">
       <textarea
-        className="w-full p-2 mb-2 border rounded-md resize-none focus:border-blue-500 focus:outline-none"
+        className="w-full p-2 mb-2 border rounded-md resize-none focus:border-blue-500 focus:outline-none "
         value={content}
         onChange={(e) => setContent(e.target.value)}
         rows="3"
+        placeholder="Add a reply..."
+        autoComplete="on"
       />
       <div className="flex justify-end">
         <button type="button" onClick={onCancel} className="px-4 py-2 mr-2 text-gray-600 bg-gray-200 rounded-md hover:bg-gray-300">
